@@ -1,0 +1,11 @@
+name: telegram-clarify-widget
+version: 0.3.2
+description: "Hermes clarify questions as Telegram HTML widgets with tappable options inside the card."
+author: local
+kind: standalone
+entrypoint: __init__.py
+platforms:
+  - linux
+  - macos
+provides_hooks:
+  - on_human_input_resolved

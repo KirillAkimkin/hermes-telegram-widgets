@@ -1,0 +1,10 @@
+{
+  "name": "telegram-agent-computer",
+  "label": "Agent computer",
+  "description": "Backend and page of the Telegram Mini App that shows the bot's live screen (open it from the Computer card in Telegram).",
+  "icon": "Monitor",
+  "version": "0.1.6",
+  "tab": { "path": "/telegram-agent-computer", "hidden": true },
+  "entry": "dist/index.js",
+  "api": "api.py"
+}

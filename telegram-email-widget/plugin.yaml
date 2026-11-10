@@ -1,0 +1,14 @@
+name: telegram-email-widget
+version: 0.4.4
+description: "Email drafts as Telegram HTML widgets with in-card Send, Edit and Cancel."
+author: local
+kind: standalone
+entrypoint: __init__.py
+platforms:
+  - linux
+  - macos
+provides_tools:
+  - telegram_email_widget
+provides_hooks:
+  - pre_llm_call
+  - pre_tool_call

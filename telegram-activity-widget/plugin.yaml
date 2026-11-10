@@ -1,0 +1,11 @@
+name: telegram-activity-widget
+version: 0.2.3
+description: "Live task activity card as a Telegram HTML widget: status, progress, current step, work log, Stop."
+author: local
+kind: standalone
+entrypoint: __init__.py
+platforms:
+  - linux
+  - macos
+provides_tools:
+  - telegram_task_activity

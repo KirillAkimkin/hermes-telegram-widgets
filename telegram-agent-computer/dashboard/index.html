@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<title>Computer</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--bg:var(--tg-theme-bg-color,#fff);--fg:var(--tg-theme-text-color,#000);--hint:var(--tg-theme-hint-color,#8a8a8e);
+--sec:var(--tg-theme-secondary-bg-color,#f1f1f4);--btn:var(--tg-theme-button-color,#2481cc);
+--btn-fg:var(--tg-theme-button-text-color,#fff);--accent:var(--tg-theme-accent-text-color,#2481cc);--warn:#c8961e;
+--ok:#2fa84f;--bad:var(--tg-theme-destructive-text-color,#e53935);color-scheme:light dark}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);
+font:15px/1.35 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+body{display:flex;flex-direction:column;height:var(--tg-viewport-stable-height,100vh);overflow:hidden;
+padding:env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left)}
+header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px 8px}
+.ttl{font-weight:600;font-size:1.05em}
+.chip{font-size:.78em;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap;background:var(--sec);color:var(--accent)}
+.chip.wait{background:var(--warn);color:#fff}.chip.off{color:var(--hint)}.chip.bad{background:var(--bad);color:#fff}
+.req{margin:0 14px 8px;padding:8px 10px;border-radius:10px;border-left:3px solid var(--warn);background:var(--sec)}
+.req .rl{font-size:.78em;font-weight:600;color:var(--warn)}.req .rt{font-weight:600;overflow-wrap:anywhere}
+main{position:relative;flex:1;min-height:0;margin:0 8px;border-radius:12px;overflow:hidden;background:#000}
+#screen{position:absolute;inset:0}
+#screen>div{background:#000!important}
+.ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;
+color:#c9ced6;font-size:.95em;background:#000;pointer-events:none}
+.ov[hidden]{display:none}
+.sp{width:22px;height:22px;border-radius:50%;border:2px solid #3a4250;border-top-color:#c9ced6;margin:0 auto 10px;animation:r 1s linear infinite}
+@keyframes r{to{transform:rotate(1turn)}}
+footer{padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
+.row{display:flex;gap:8px}
+.btn{flex:1;border:0;border-radius:10px;padding:11px 12px;font:inherit;font-size:.95em;font-weight:600;background:var(--sec);
+color:var(--fg);transition:transform .12s;-webkit-tap-highlight-color:transparent}
+.btn.pr{background:var(--btn);color:var(--btn-fg)}
+.btn:active{transform:scale(.98)}.btn[disabled]{opacity:.55}.btn[hidden]{display:none}
+.kb{display:grid;grid-template-columns:1fr auto auto;gap:8px;margin-top:8px}.kb[hidden]{display:none}
+.kb .eye{flex:none;padding:10px;font-size:.85em}
+.kb input{min-width:0;border:0;border-radius:10px;padding:10px 12px;font:inherit;background:var(--sec);color:var(--fg);outline:none}
+.kb input::placeholder{color:var(--hint)}
+.keys{grid-column:1/-1;display:flex;gap:8px}.keys .btn{padding:8px 10px;font-size:.88em}
+.hint{margin:8px 2px 0;font-size:.8em;color:var(--hint);text-align:center}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}.sp{animation:none}}
+</style>
+</head>
+<body>
+<header><span class="ttl" data-t="title">Computer</span><span id="chip" class="chip off" data-t="connecting">Connecting…</span></header>
+<div id="req" class="req" hidden><div class="rl" data-t="need">Hermes needs you</div><div id="reqt" class="rt"></div></div>
+<main>
+  <div id="screen"></div>
+  <div id="ov" class="ov"><div><div class="sp"></div><span id="ovt" data-t="connecting">Connecting…</span></div></div>
+</main>
+<footer>
+  <div class="row">
+    <button id="take" class="btn pr" type="button" disabled data-t="take">Take over</button>
+    <button id="back" class="btn" type="button" hidden data-t="back">Hand back</button>
+  </div>
+  <form id="kb" class="kb" hidden autocomplete="off">
+    <input id="text" type="password" enterkeyhint="send" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" data-1p-ignore data-lpignore="true" data-bwignore data-form-type="other" data-tp="placeholder">
+    <button id="reveal" class="btn eye" type="button" aria-controls="text" aria-pressed="false">Show</button>
+    <button id="type" class="btn pr" type="submit" data-t="type">Type</button>
+    <div class="keys">
+      <button class="btn" type="button" data-key="enter" data-t="enter">Enter</button>
+      <button class="btn" type="button" data-key="backspace" aria-label="Backspace">⌫</button>
+      <button class="btn" type="button" data-key="tab">Tab</button>
+    </div>
+  </form>
+  <p id="hint" class="hint" data-t="watching">You are watching. Take over to use the screen.</p>
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>

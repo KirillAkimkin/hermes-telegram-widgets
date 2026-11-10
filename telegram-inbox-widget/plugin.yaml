@@ -1,0 +1,14 @@
+name: telegram-inbox-widget
+version: 0.1.6
+description: "Inbox list and single emails as Telegram HTML widgets with Read, Reply and Open in Gmail."
+author: local
+kind: standalone
+entrypoint: __init__.py
+platforms:
+  - linux
+  - macos
+provides_tools:
+  - telegram_inbox_widget
+provides_hooks:
+  - post_tool_call
+  - post_llm_call

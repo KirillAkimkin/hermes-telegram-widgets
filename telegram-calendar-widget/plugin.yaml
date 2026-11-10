@@ -1,0 +1,11 @@
+name: telegram-calendar-widget
+version: 0.3.3
+description: "Google Calendar event drafts as Telegram HTML widgets with in-card Create, Edit and Cancel."
+author: local
+kind: standalone
+entrypoint: __init__.py
+platforms:
+  - linux
+  - macos
+provides_tools:
+  - telegram_calendar_widget
